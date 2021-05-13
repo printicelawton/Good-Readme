@@ -18,8 +18,21 @@
 
 // TODO: Include packages needed for this application
 const inquire = require('inquirer');
-const fs = require('fs');
-const generateMarkdown = require ('.generateMarkdown.js')
+
+// const fs = require('fs');
+
+const generateMarkdown = require("./utils/generateMarkdown");
+
+//Answer validation
+
+function validateAnswer(answer) {
+    if (answer != "") {
+        return true;
+    } else {
+        return "Please answer the question with some kind on input.";
+    }
+}
+
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -28,49 +41,56 @@ const questions = [
         type: 'input',
         message: 'What is the name of your project?',
         name: 'projectname',
+        validate: validateAnswer,
     },
     {
         type: 'input',
         message:  'What was you motivation behind this project?',
-        name: 'motivation'
+        name: 'motivation',
+        validate: validateAnswer,
     },
     {
         type: 'input',
         message:  'Provide a brief description of your project.',
-        name: 'description'
+        name: 'description',
+        validate: validateAnswer,
     },
     {
         type: 'input',
         message: 'What is your Github Username?',
         name: 'username',
+        validate: validateAnswer,
       },
       {
         type: 'input',
         message: 'What is your email address',
         name: 'userEmail',
+        validate: validateAnswer,
       },
       {
         type: 'input',
         message: 'What is your project name',
         name: 'project name',
+        validate: validateAnswer,
       },
       {
           type: 'input',
-          message:  'What was you motivation behind this project?'
+          message:  'What was you motivation behind this project?',
+          validateAnswer
       }
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
 
-// fs.writeFile('Readme.md', process.argv[2], (err) =>
-//   err ? console.error(err) : console.log('Generating Readme')
-// );
+fs.writeFile('Readme.md', process.argv[2], (err) =>
+  err ? console.error(err) : console.log('Generating Readme')
+);
 
 // TODO: Create a function to initialize app
-function init() {
-    inquire.prompt(questions).then
-}
+// function init() {
+//     inquire.prompt(questions).then
+// }
 
-// Function call to initialize app
+// // Function call to initialize app
 init();
