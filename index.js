@@ -78,12 +78,13 @@ const questions = [
 //     });
 // }
 
+//Note: takes 3 params! 
 function createFile(fileName, data) {
     fs.writeFile("./utils/generateMarkdown" + fileName, data, function (error) {
       if (error) {
         return console.log(error);
       }
-      console.log(fileName + "Successfully Created!");
+      console.log('Congrats, you just successfully created at Good Readme!');
     });
   }
 
