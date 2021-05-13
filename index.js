@@ -19,7 +19,7 @@
 // TODO: Include packages needed for this application
 const inquire = require('inquirer');
 
-// const fs = require('fs');
+const fs = require('fs');
 
 const generateMarkdown = require("./utils/generateMarkdown");
 
@@ -70,13 +70,22 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFile(fileName, generateMarkdown(data), function (err) {
-        if (err) {
-            return console.log(err);
-        }
+// function writeToFile(fileName, data) {
+//     fs.writeFile(fileName, generateMarkdown(data), function (err) {
+//         if (err) {
+//             return console.log(err);
+//         }
+//     });
+// }
+
+function createFile(fileName, data) {
+    fs.writeFile("./utils/generateMarkdown" + fileName, data, function (error) {
+      if (error) {
+        return console.log(error);
+      }
+      console.log(fileName + "Successfully Created!");
     });
-}
+  }
 
 
 // TODO: Create a function to initialize app
