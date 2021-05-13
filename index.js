@@ -17,15 +17,43 @@
 
 
 // TODO: Include packages needed for this application
+const inquire = require('inquirer');
+const fs = require('fs');
 
 // TODO: Create an array of questions for user input
-const questions = [];
+const questions = [
+    {
+        type: 'input',
+        message: 'What is your Github Username?',
+        name: 'username',
+      },
+      {
+        type: 'input',
+        message: 'What is your email address',
+        name: 'email address',
+      },
+      {
+        type: 'input',
+        message: 'What is your project name',
+        name: 'project name',
+      },
+      {
+          type: 'input',
+          message:  'What was you motivation behind this project?'
+      }
+];
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {}
 
+// fs.writeFile('Readme.md', process.argv[2], (err) =>
+//   err ? console.error(err) : console.log('Generating Readme')
+// );
+
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    inquire.prompt(questions).then
+}
 
 // Function call to initialize app
 init();
