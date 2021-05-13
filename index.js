@@ -45,14 +45,14 @@ const questions = [
     },
     {
         type: 'input',
-        message:  'What was you motivation behind this project?',
-        name: 'motivation',
+        message:  'Provide a brief description of your project.',
+        name: 'description',
         validate: validateAnswer,
     },
     {
         type: 'input',
-        message:  'Provide a brief description of your project.',
-        name: 'description',
+        message:  'What was you motivation behind this project?',
+        name: 'motivation',
         validate: validateAnswer,
     },
     {
@@ -63,34 +63,28 @@ const questions = [
       },
       {
         type: 'input',
-        message: 'What is your email address',
+        message: 'What is your Github email address for prospective contributors?',
         name: 'userEmail',
         validate: validateAnswer,
       },
-      {
-        type: 'input',
-        message: 'What is your project name',
-        name: 'project name',
-        validate: validateAnswer,
-      },
-      {
-          type: 'input',
-          message:  'What was you motivation behind this project?',
-          validateAnswer
-      }
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, generateMarkdown(data), function (err) {
+        if (err) {
+            return console.log(err);
+        }
+    });
+}
 
-fs.writeFile('Readme.md', process.argv[2], (err) =>
-  err ? console.error(err) : console.log('Generating Readme')
-);
 
 // TODO: Create a function to initialize app
-// function init() {
-//     inquire.prompt(questions).then
-// }
+function init() {
+    inquire.prompt(questions).then (function (data) {
+        createFile("README.md", generateMarkdown(data));
+      });
+}
 
 // // Function call to initialize app
 init();
